@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Send Predefined Message to Telegram Group 3 Times</title>
+</head>
+<body>
+    <h1>Sending message 3 times automatically...</h1>
+
+    <script>
+        function sendMessage(message, delay) {
+            const botToken = '7296178064:AAEAchRyEw56HBStZgxiA3hSgHfnjft6M94';  // Replace with your bot token
+            const chatId = '-1002409900593';      // Replace with your group's chat_id
+
+            const url = `https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatId}&text=${encodeURIComponent(message)}`;
+
+            // Send the request after the specified delay
+            setTimeout(() => {
+                fetch(url)
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.ok) {
+                            console.log('Message sent successfully');
+                        } else {
+                            console.log('Error sending message:', data.description);
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                    });
+            }, delay);
+        }
+
+        // Automatically send message 3 times
+        window.onload = function () {
+            const message = 'Aimy busuk';
+            sendMessage(message, 0);
+            sendMessage(message, 1000);
+            sendMessage(message, 2000);
+            sendMessage(message, 3000);
+            sendMessage(message, 4000);
+            sendMessage(message, 5000);
+            sendMessage(message, 6000);
+            sendMessage(message, 7000);
+            sendMessage(message, 8000);
+            sendMessage(message, 9000);
+            sendMessage(message, 10000);
+        };
+    </script>
+</body>
+</html>
